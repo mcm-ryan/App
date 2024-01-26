@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function LikeButton() {
+  const [liked, setLiked] = React.useState(false);
+  if (liked) {
+    return React.createElement("span", null, "You liked this");
+  } else {
+    return React.createElement(
+      "button",
+      {
+        onClick: () => setLiked(true),
+      },
+      "Like"
+    );
+
+  }
 }
 
-export default App;
+const domContainer = document.querySelector("#like_button_container");
+const root = ReactDOM.createRoot(domContainer);
+root.render(React.createElement(LikeButton));
